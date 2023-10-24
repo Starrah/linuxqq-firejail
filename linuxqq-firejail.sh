@@ -34,7 +34,7 @@ echo "  -> Wrapping launcher..."
 cp "${launcher}" "${launcher}".backup
 sed -i "2s!QQ!QQ in Firejail!" "${launcher}"
 sed -i "\$a""${patched_marker}" "${launcher}"
-sed -i "3s!Exec=!Exec=sh -c \"env PATH=""${flatpak_xdg_utils_dir}"":\$PATH firejail --private-bin=linuxqq,xdg-open,xdg-mime,bash !" "${launcher}"
+sed -i "3s!Exec=!Exec=sh -c \"env PATH=""${flatpak_xdg_utils_dir}"":\$PATH env IBUS_USE_PORTAL=1 firejail --private-bin=linuxqq,xdg-open,xdg-mime,bash !" "${launcher}"
 sed -i "3s!%U!\"%U!" "${launcher}"
 # rm "${launcher}".backup
 
